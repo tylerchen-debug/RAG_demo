@@ -21,10 +21,10 @@ knowledge_base/*.md
    vectors + metadata
       │  (3) store        db.py  ->  PostgreSQL table: document_chunks
       ▼
- ┌─────────────────────────────────────────────┐
- │  query text ─embed─► vector ─►  ORDER BY      │   vector_search.py
- │  embedding <=> query  LIMIT k  ► top-K chunks │
- └─────────────────────────────────────────────┘
+ ┌───────────────────────────────────────────────┐
+ │  query text ─► embed ─► vector ─►  ORDER BY   │   vector_search.py
+ │  embedding <=> query  LIMIT k ─► top-K chunks │
+ └───────────────────────────────────────────────┘
 ```
 
 ## Prerequisites
