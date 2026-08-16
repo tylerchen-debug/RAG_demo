@@ -16,20 +16,20 @@ POST /knowledge/ask   {"question": "..."}
         │
         │  ┌──────────────────────────────────────────────┐
         ├─►│ (1) SCOPE GUARD          scope.py            │
-        │  │     keyword pre-filter, no DB / model at all  │
+        │  │     keyword pre-filter, no DB / model at all │
         │  └──────────────────────────────────────────────┘
         │        └─► out of scope ──► rejected_out_of_scope   (llm_called: false)
         │
         │  ┌──────────────────────────────────────────────┐
         ├─►│ (2) RETRIEVAL            retrieval.py        │
-        │  │     embed question ─► pgvector top-K          │
+        │  │     embed question ─► pgvector top-K         │
         │  └──────────────────────────────────────────────┘
         │        └─► best score < MIN_SIMILARITY
         │                     ──► rejected_low_relevance     (llm_called: false)
         │
         │  ┌──────────────────────────────────────────────┐
         └─►│ (3) ANSWER               llm.py              │
-           │     the ONLY paid LLM call, grounded in (2)   │
+           │     the ONLY paid LLM call, grounded in (2)  │
            └──────────────────────────────────────────────┘
                   └─► answered  { answer, sources[] }        (llm_called: true)
 ```
